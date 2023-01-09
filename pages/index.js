@@ -1,17 +1,21 @@
-import useSWR from "swr";
-import ArtPieces from "../components/ArtPieces/ArtPieces";
+import { useAtom } from "jotai";
+import Spotlight from "../components/Spotlight/Spotlight";
+import globalPieces from "./store";
 
-export default function HomePage() {
-  const { data, error, isLoading } = useSWR(
-    `https://example-apis.vercel.app/api/art`
-  );
+export default function SpotlightPage() {
+  const [pieces] = useAtom(globalPieces);
 
-  if (error) return <div>failed to load</div>;
-  if (isLoading) return <div>loading...</div>;
+  // get a random piece ---------------
+  function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
+  const randomPiece = pieces.at(getRandomInt(pieces.length));
+  console.log(randomPiece);
 
   return (
-    <div>
-      <ArtPieces pieces={data} />
-    </div>
+    <>
+      <h1>startseite</h1>
+      <Spotlight piece={randomPiece} />
+    </>
   );
 }

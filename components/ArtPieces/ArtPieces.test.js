@@ -29,13 +29,13 @@ test("Each art piece's image is displayed", () => {
   expect(artImage).toBeInTheDocument();
 });
 
-test(" Each art piece's title is displayed ", () => {
+test("Each art piece's title is displayed", () => {
   render(<ArtPieces pieces={data} />);
   const artTitle = screen.getByText("Orange Red and Green Abstract Painting");
   expect(artTitle).toBeInTheDocument();
 });
 
-test(" Each art piece's artist is displayed ", () => {
+test("Each art piece's artist is displayed", () => {
   render(<ArtPieces pieces={data} />);
   const artArtist = screen.getByText("Steve Johnson");
   expect(artArtist).toBeInTheDocument();
